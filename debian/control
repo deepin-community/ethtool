@@ -1,0 +1,19 @@
+Source: ethtool
+Section: net
+Priority: optional
+Maintainer: Debian Kernel Team <debian-kernel@lists.debian.org>
+Uploaders: Ben Hutchings <benh@debian.org>, Salvatore Bonaccorso <carnil@debian.org>
+Standards-Version: 4.6.0
+Build-Depends: debhelper-compat (= 13), autoconf, automake, libmnl-dev, pkg-config
+Rules-Requires-Root: no
+Homepage: https://www.kernel.org/pub/software/network/ethtool/
+Vcs-Git: https://salsa.debian.org/kernel-team/ethtool.git
+Vcs-Browser: https://salsa.debian.org/kernel-team/ethtool
+
+Package: ethtool
+Architecture: linux-any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: display or change Ethernet device settings
+ ethtool can be used to query and change settings such as speed, auto-
+ negotiation and checksum offload on many network devices, especially
+ Ethernet devices.
