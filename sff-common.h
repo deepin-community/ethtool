@@ -62,8 +62,12 @@
 #define  SFF8024_ID_CDFP_S3				0x16
 #define  SFF8024_ID_MICRO_QSFP			0x17
 #define  SFF8024_ID_QSFP_DD				0x18
+#define  SFF8024_ID_OSFP				0x19
 #define  SFF8024_ID_DSFP				0x1B
-#define  SFF8024_ID_LAST				SFF8024_ID_DSFP
+#define  SFF8024_ID_QSFP_PLUS_CMIS			0x1E
+#define  SFF8024_ID_SFP_DD_CMIS				0x1F
+#define  SFF8024_ID_SFP_PLUS_CMIS			0x20
+#define  SFF8024_ID_LAST				SFF8024_ID_SFP_PLUS_CMIS
 #define  SFF8024_ID_UNALLOCATED_LAST	0x7F
 #define  SFF8024_ID_VENDOR_START		0x80
 #define  SFF8024_ID_VENDOR_LAST			0xFF
@@ -126,8 +130,8 @@
 #define  SFF8024_ENCODING_PAM4			0x08
 
 /* Most common case: 16-bit unsigned integer in a certain unit */
-#define OFFSET_TO_U16(offset) \
-		(id[offset] << 8 | id[(offset) + 1])
+#define OFFSET_TO_U16_PTR(ptr, offset) (ptr[offset] << 8 | ptr[(offset) + 1])
+#define OFFSET_TO_U16(offset) OFFSET_TO_U16_PTR(id, offset)
 
 # define PRINT_xX_PWR(string, var)                             \
 		printf("\t%-41s : %.4f mW / %.2f dBm\n", (string),         \
@@ -160,7 +164,7 @@ struct sff_channel_diags {
 /* Module Monitoring Fields */
 struct sff_diags {
 
-#define MAX_CHANNEL_NUM 4
+#define MAX_CHANNEL_NUM 32
 #define LWARN 0
 #define HWARN 1
 #define LALRM 2
@@ -197,6 +201,8 @@ void sff_show_value_with_unit(const __u8 *id, unsigned int reg,
 			      const char *unit);
 void sff_show_ascii(const __u8 *id, unsigned int first_reg,
 		    unsigned int last_reg, const char *name);
+void sff_show_lane_status(const char *name, unsigned int lane_cnt,
+			  const char *yes, const char *no, unsigned int value);
 void sff_show_thresholds(struct sff_diags sd);
 
 void sff8024_show_oui(const __u8 *id, int id_offset);

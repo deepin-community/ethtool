@@ -21,7 +21,10 @@
 #include <unistd.h>
 #include <endian.h>
 #include <sys/ioctl.h>
-#include <net/if.h>
+#define __UAPI_DEF_IF_IFNAMSIZ	1
+#define __UAPI_DEF_IF_IFMAP	1
+#define __UAPI_DEF_IF_IFREQ	1
+#include <linux/if.h>
 
 #include "json_writer.h"
 #include "json_print.h"
@@ -33,28 +36,11 @@
 struct nl_context;
 #endif
 
-/* ethtool.h expects these to be defined by <linux/types.h> */
-#ifndef HAVE_BE_TYPES
-typedef uint16_t __be16;
-typedef uint32_t __be32;
-typedef unsigned long long __be64;
-#endif
-
 typedef unsigned long long u64;
 typedef uint32_t u32;
 typedef uint16_t u16;
 typedef uint8_t u8;
 typedef int32_t s32;
-
-/* ethtool.h epxects __KERNEL_DIV_ROUND_UP to be defined by <linux/kernel.h> */
-#include <linux/kernel.h>
-#ifndef __KERNEL_DIV_ROUND_UP
-#define __KERNEL_DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
-#endif
-
-#ifndef ALTIFNAMSIZ
-#define ALTIFNAMSIZ 128
-#endif
 
 #include <linux/ethtool.h>
 #include <linux/net_tstamp.h>
@@ -374,6 +360,9 @@ int altera_tse_dump_regs(struct ethtool_drvinfo *info,
 /* VMware vmxnet3 ethernet controller */
 int vmxnet3_dump_regs(struct ethtool_drvinfo *info, struct ethtool_regs *regs);
 
+/* hns3 ethernet controller */
+int hns3_dump_regs(struct ethtool_drvinfo *info, struct ethtool_regs *regs);
+
 /* Rx flow classification */
 int rxclass_parse_ruleopts(struct cmd_context *ctx,
 			   struct ethtool_rx_flow_spec *fsp, __u32 *rss_context);
@@ -384,15 +373,15 @@ int rxclass_rule_ins(struct cmd_context *ctx,
 int rxclass_rule_del(struct cmd_context *ctx, __u32 loc);
 
 /* Module EEPROM parsing code */
-void sff8079_show_all(const __u8 *id);
+void sff8079_show_all_ioctl(const __u8 *id);
+int sff8079_show_all_nl(struct cmd_context *ctx);
 
 /* Optics diagnostics */
 void sff8472_show_all(const __u8 *id);
 
 /* QSFP Optics diagnostics */
-void sff8636_show_all(const __u8 *id, __u32 eeprom_len);
-void sff8636_show_all_paged(const struct ethtool_module_eeprom *page_zero,
-			    const struct ethtool_module_eeprom *page_three);
+void sff8636_show_all_ioctl(const __u8 *id, __u32 eeprom_len);
+int sff8636_show_all_nl(struct cmd_context *ctx);
 
 /* FUJITSU Extended Socket network device */
 int fjes_dump_regs(struct ethtool_drvinfo *info, struct ethtool_regs *regs);
@@ -406,10 +395,19 @@ int dsa_dump_regs(struct ethtool_drvinfo *info, struct ethtool_regs *regs);
 /* i.MX Fast Ethernet Controller */
 int fec_dump_regs(struct ethtool_drvinfo *info, struct ethtool_regs *regs);
 
+/* Freescale/NXP ENETC Ethernet Controller */
+int fsl_enetc_dump_regs(struct ethtool_drvinfo *info, struct ethtool_regs *regs);
+
 /* Intel(R) Ethernet Controller I225-LM/I225-V adapter family */
 int igc_dump_regs(struct ethtool_drvinfo *info, struct ethtool_regs *regs);
 
 /* Broadcom Ethernet Controller */
 int bnxt_dump_regs(struct ethtool_drvinfo *info, struct ethtool_regs *regs);
+
+/* TI CPSW Ethernet Switch */
+int cpsw_dump_regs(struct ethtool_drvinfo *info, struct ethtool_regs *regs);
+
+/* Microchip Ethernet Controller */
+int lan743x_dump_regs(struct ethtool_drvinfo *info, struct ethtool_regs *regs);
 
 #endif /* ETHTOOL_INTERNAL_H__ */

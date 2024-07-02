@@ -1,3 +1,130 @@
+ethtool (1:6.9-1) unstable; urgency=medium
+
+  * New upstream release: 6.9
+  * Declare compliance with Debian policy 4.7.0
+  * debian/control: Replace Build-Depends on pkg-config with pkgconf
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 25 May 2024 17:17:29 +0200
+
+ethtool (1:6.7-1) unstable; urgency=medium
+
+  * New upstream release: 6.7
+  * Update copyright years for debian/* packaging files
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 31 Jan 2024 08:37:15 +0100
+
+ethtool (1:6.6-1) unstable; urgency=medium
+
+  * Upload to unstable
+  * New upstream release: 6.6
+  * debian/ethtool.if-{pre-up,up}: Reference ethtool in /usr/bin.
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 29 Nov 2023 17:07:25 +0100
+
+ethtool (1:6.5-2) experimental; urgency=medium
+
+  * d/rules: Install ethtool in /usr/sbin
+
+ -- Ben Hutchings <benh@debian.org>  Fri, 24 Nov 2023 16:21:40 +0000
+
+ethtool (1:6.5-1) unstable; urgency=medium
+
+  * New upstream release: 6.5
+  * debian/copyright: Fix format error in license stanza
+  * debian/copyright: Add new stanza for hns3 driver support
+  * debian/copyright: Cleanup trailing whitespaces
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 13 Sep 2023 07:27:18 +0200
+
+ethtool (1:6.4-1) unstable; urgency=medium
+
+  * New upstream release: 6.4
+  * debian/copyright: Add copyright information for new m4/* files
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 04 Jul 2023 09:32:47 +0200
+
+ethtool (1:6.3-1) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 12 Jun 2023 16:59:16 +0200
+
+ethtool (1:6.3-1~exp1) experimental; urgency=medium
+
+  * New upstream release: 6.3
+  * debian/copyright: Cover copyright statement for all files in uapi/linux
+  * Update copyright information for debian/* packaging files
+  * debian/watch: Switch to mode=git and generate orig tarball from git
+    repository
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 01 Jun 2023 20:42:43 +0200
+
+ethtool (1:6.2-1~exp1) experimental; urgency=medium
+
+  * New upstream release: 6.2
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 26 May 2023 15:51:03 +0200
+
+ethtool (1:6.1-1) unstable; urgency=medium
+
+  * New upstream release: 6.1
+  * debian/copyright: Add stanza for files introduced with support for NXP
+    ENETC driver
+  * Declare compliance with Debian policy 4.6.2
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 20 Dec 2022 12:18:39 +0100
+
+ethtool (1:6.0-1) unstable; urgency=medium
+
+  * New upstream release: 6.0
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 21 Oct 2022 06:59:48 +0200
+
+ethtool (1:5.19-1) unstable; urgency=medium
+
+  * New upstream release: 5.19
+  * debian/copyright: Add new stanza for cpsw.c
+  * debian/copyright: Add new stanza for lan743x.c
+  * debian/source/lintian-overrides: Update override for
+    orig-tarball-missing-upstream-signature
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 24 Aug 2022 07:21:32 +0200
+
+ethtool (1:5.18-1) unstable; urgency=medium
+
+  [ Ben Hutchings ]
+  * d/.gitignore: Ignore more debhelper temporary files
+
+  [ Salvatore Bonaccorso ]
+  * New upstream release: 5.18
+  * debian/watch: use uscan version 4
+  * Update copyright information for debian/* packaging files
+  * Declare compliance with Debian policy 4.6.1
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 16 Jun 2022 21:08:14 +0200
+
+ethtool (1:5.17-1) unstable; urgency=medium
+
+  [ Ben Hutchings ]
+  * d/salsa-ci.yml: Disable arch:all builds
+
+  [ Salvatore Bonaccorso ]
+  * New upstream release: 5.17
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 05 Apr 2022 07:00:25 +0200
+
+ethtool (1:5.16-1) unstable; urgency=medium
+
+  [ Ben Hutchings ]
+  * d/salsa-ci.yml: Add CI configuration for salsa.debian.org
+
+  [ Salvatore Bonaccorso ]
+  * New upstream release: 5.16
+  * debian/copyright: Adjust information for uapi/linux/{ethtool,net_tstamp}.h
+  * debian/copyright: Adjust filename pattern for smsc911x.c
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 19 Jan 2022 08:33:23 +0100
+
 ethtool (1:5.15-1) unstable; urgency=medium
 
   [ Romain Perier ]
