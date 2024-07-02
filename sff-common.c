@@ -53,6 +53,23 @@ void sff_show_ascii(const __u8 *id, unsigned int first_reg,
 	printf("\n");
 }
 
+void sff_show_lane_status(const char *name, unsigned int lane_cnt,
+			  const char *yes, const char *no, unsigned int value)
+{
+	printf("\t%-41s : ", name);
+	if (!value) {
+		printf("None\n");
+		return;
+	}
+
+	printf("[");
+	while (lane_cnt--) {
+		printf(" %s%c", value & 1 ? yes : no, lane_cnt ? ',': ' ');
+		value >>= 1;
+	}
+	printf("]\n");
+}
+
 void sff8024_show_oui(const __u8 *id, int id_offset)
 {
 	printf("\t%-41s : %02x:%02x:%02x\n", "Vendor OUI",
@@ -139,8 +156,20 @@ void sff8024_show_identifier(const __u8 *id, int id_offset)
 	case SFF8024_ID_QSFP_DD:
 		printf(" (QSFP-DD Double Density 8X Pluggable Transceiver (INF-8628))\n");
 		break;
+	case SFF8024_ID_OSFP:
+		printf(" (OSFP 8X Pluggable Transceiver)\n");
+		break;
 	case SFF8024_ID_DSFP:
 		printf(" (DSFP Dual Small Form Factor Pluggable Transceiver)\n");
+		break;
+	case SFF8024_ID_QSFP_PLUS_CMIS:
+		printf(" (QSFP+ or later with Common Management Interface Specification (CMIS))\n");
+		break;
+	case SFF8024_ID_SFP_DD_CMIS:
+		printf(" (SFP-DD Double Density 2X Pluggable Transceiver with Common Management Interface Specification (CMIS))\n");
+		break;
+	case SFF8024_ID_SFP_PLUS_CMIS:
+		printf(" (SFP+ and later with Common Management Interface Specification (CMIS))\n");
 		break;
 	default:
 		printf(" (reserved or unknown)\n");
