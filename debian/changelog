@@ -1,3 +1,49 @@
+ethtool (1:6.14.2-1) trixie; urgency=medium
+
+  * New upstream release: 6.14.2
+
+  [ Salvatore Bonaccorso ]
+  * debian/salsa-ci.yml: Set release to trixie
+  * netlink: fix print_string when the value is NULL
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 23 Aug 2025 21:10:25 +0200
+
+ethtool (1:6.14.1-1) unstable; urgency=medium
+
+  * New upstream release: 6.14.1
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 26 Jun 2025 20:30:58 +0200
+
+ethtool (1:6.14-2) unstable; urgency=medium
+
+  * Set type property to console-application for provided AppStream metainfo
+    XML (Closes: #1102647)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 30 Apr 2025 06:38:17 +0200
+
+ethtool (1:6.14-1) unstable; urgency=medium
+
+  * New upstream release: 6.14
+    - Add AppStream metainfo XML with modalias documented supported hardware
+      (Closes: #1076629)
+  * debian/copyright: Add stanza for netlink/ts.h
+  * Update copyright years for debian/* packaging files
+  * Declare compliance with Debian policy 4.7.2
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 08 Apr 2025 06:35:16 +0200
+
+ethtool (1:6.11-1) unstable; urgency=medium
+
+  * New upstream release: 6.11
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 10 Oct 2024 22:20:20 +0200
+
+ethtool (1:6.10-1) unstable; urgency=medium
+
+  * New upstream release: 6.10
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 10 Aug 2024 07:18:02 +0200
+
 ethtool (1:6.9-1) unstable; urgency=medium
 
   * New upstream release: 6.9
